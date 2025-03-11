@@ -33,13 +33,16 @@ function MovementPicker(FinalBoard, PlayerPos)
 	until choice:lower() == "exit"
 end
 function MovementFunction(choice, FinalBoard, PlayerPos)
-	if SquareHexer(PlayerPos) == "ODD" then
+	if SquareHexer(FinalBoard, PlayerPos) == "ODD" then
 		
-	elseif SquareHexer(PlayerPos) == "EVEN" then
+	elseif SquareHexer(FinalBoard, PlayerPos) == "EVEN" then
 		
 	end
 end
-function SquareHexer(PlayerPos)
-	
+function SquareHexer(FinalBoard, PlayerPos)
+	local result
+	if (FinalBoard[PlayerPos[1]][PlayerPos[2]]%%2) == 1 then result = "ODD"
+	else result == "EVEN" end
+	return result
 end
 print(Beginning())

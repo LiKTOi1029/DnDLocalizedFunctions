@@ -33,4 +33,7 @@ end
 function MovementFunction(choice, FinalBoard)
 	
 end
+function SquareHexer()
+	
+end
 print(Beginning())

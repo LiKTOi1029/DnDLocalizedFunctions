@@ -20,7 +20,15 @@ function TableCreation(choice)
 		io.write("\n")
 		table.insert(Table, NewTable)
 	end
-	
+	MovementPicker(Table)
 	return result
+end
+function MovementPicker(FinalBoard)
+	io.write("Please input a direction to move across the 2x2 space like a hexagonal plane\n".."Directions: Lower-Right (LR), Upper-Right (UR), Lower-Left (LL), Upper-Left (UL), Up (U), Down (D)\n")
+	local choice = io.read("*l"):gsub("\n","")
+	MovementFunction(choice, FinalBoard)
+end
+function MovementFunction(choice, FinalBoard)
+	
 end
 print(Beginning())

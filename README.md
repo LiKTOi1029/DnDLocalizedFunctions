@@ -7,4 +7,6 @@ All a hexagonal grid really is, is a square grid; however, with a slightly diffe
 In the very near future I will implement a real grid generator instead of representing it like this.
 ## The Objective
 By the finalization of this repo I wish to have released a full version of my DnD bot and with customization options 
-later in the near future.
+later in the near future.\
+\
+NOTE: My discord bot is strictly closed source

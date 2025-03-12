@@ -45,4 +45,7 @@ function SquareHexer(FinalBoard, PlayerPos)
 	else result == "EVEN" end
 	return result
 end
+function OddMovement(choice, FinalBoard, PlayerPos)
+	
+end
 print(Beginning())

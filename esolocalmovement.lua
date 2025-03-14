@@ -33,7 +33,7 @@ function MovementPicker(FinalBoard, PlayerPos)
 end
 function MovementFunction(choice, FinalBoard, PlayerPos)
 	if SquareHexer(FinalBoard, PlayerPos) == "ODD" then
-		
+		PlayerPos = OddMovement(choice, PlayerPos)
 	elseif SquareHexer(FinalBoard, PlayerPos) == "EVEN" then
 		
 	end
@@ -44,21 +44,31 @@ function SquareHexer(FinalBoard, PlayerPos)
 	else result == "EVEN" end
 	return result
 end
-function OddMovement(choice, FinalBoard, PlayerPos)
+function OddMovement(choice, PlayerPos)
+	local result
 	if choice:lower():gsub("-","") == ("lowerright" or "lr") then 
 		PlayerPos[1] = PlayerPos[1]+1
 		PlayerPos[2] = PlayerPos[2]+1
+		return PlayerPos
 	elseif choice:lower():gsub("-","") == ("upperright" or "ur") then
 		PlayerPos[1] = PlayerPos[1]+1
+		return PlayerPos
 	elseif choice:lower():gsub("-","") == ("lowerleft" or "ll") then
 		PlayerPos[1] = PlayerPos[1]-1
 		PlayerPos[2] = PlayerPos[2]+1
+		return PlayerPos
 	elseif choice:lower():gsub("-","") == ("upperleft" or "ul") then
 		PlayerPos[1] = PlayerPos[1]-1
+		return PlayerPos
 	elseif choice:lower():gsub("-","") == ("up", "u") then
 		PlayerPos[2] = PlayerPos[2]-1
+		return PlayerPos
 	elseif choice:lower():gsub("-","") == ("down", "d") then
 		PlayerPos[2] = PlayerPos[2]+1
+		return PlayerPos
+	else
+		result = "This is not a valid option!"
+		return result
 	end
 end
 print(Beginning())

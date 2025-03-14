@@ -28,7 +28,7 @@ function MovementPicker(FinalBoard, PlayerPos)
 		
 		io.write("Please input a direction to move across the 2x2 space like a hexagonal plane\n".."Directions: Lower-Right (LR), Upper-Right (UR), Lower-Left (LL), Upper-Left (UL), Up (U), Down (D)\n")
 		local choice = io.read("*l"):gsub("\n","")
-		if choice:lower() ~= "exit" then MovementFunction(choice, FinalBoard, PlayerPos) end
+		if choice:lower() ~= "exit" then FinalBoard, PlayerPos = MovementFunction(choice, FinalBoard, PlayerPos) end
 	until choice:lower() == "exit"
 end
 function MovementFunction(choice, FinalBoard, PlayerPos)

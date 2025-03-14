@@ -17,9 +17,7 @@ function TableCreation(choice)
 				table.insert(NewTable, "P")
 				PlayerPos = {math.ceil(choice/2), math.ceil(choice/2)}
 			else table.insert(NewTable, "O") end
-			io.write(NewTable[num2])
 		end
-		io.write("\n")
 		table.insert(Table, NewTable)
 	end
 	MovementPicker(Table, PlayerPos)
@@ -27,6 +25,7 @@ function TableCreation(choice)
 end
 function MovementPicker(FinalBoard, PlayerPos)
 	repeat
+		
 		io.write("Please input a direction to move across the 2x2 space like a hexagonal plane\n".."Directions: Lower-Right (LR), Upper-Right (UR), Lower-Left (LL), Upper-Left (UL), Up (U), Down (D)\n")
 		local choice = io.read("*l"):gsub("\n","")
 		if choice:lower() ~= "exit" then MovementFunction(choice, FinalBoard, PlayerPos) end
@@ -46,6 +45,25 @@ function SquareHexer(FinalBoard, PlayerPos)
 	return result
 end
 function OddMovement(choice, FinalBoard, PlayerPos)
-	
+	if choice:lower():gsub("-","") == ("lowerright" or "lr") then 
+		PlayerPos[1] = PlayerPos[1]+1
+		PlayerPos[2] = PlayerPos[2]+1
+	elseif choice:lower():gsub("-","") == ("upperright" or "ur") then
+		PlayerPos[1] = PlayerPos[1]+1
+	elseif choice:lower():gsub("-","") == ("lowerleft" or "ll") then
+		PlayerPos[1] = PlayerPos[1]-1
+		PlayerPos[2] = PlayerPos[2]+1
+	elseif choice:lower():gsub("-","") == ("upperleft" or "ul") then
+		PlayerPos[1] = PlayerPos[1]-1
+	elseif choice:lower():gsub("-","") == ("up", "u") then
+		PlayerPos[2] = PlayerPos[2]-1
+	elseif choice:lower():gsub("-","") == ("down", "d") then
+		PlayerPos[2] = PlayerPos[2]+1
+	end
 end
 print(Beginning())
+--[[extra guideline for the developer:
+The directions:
+Positive PlayerPos to go right and down
+Negative PlayerPos to go left and up
+]]

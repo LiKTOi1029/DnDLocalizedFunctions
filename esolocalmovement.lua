@@ -23,6 +23,9 @@ function TableCreation(choice)
 	MovementPicker(Table, PlayerPos)
 	return result
 end
+function MapRenderer(FinalBoard, PlayerPos)
+	
+end
 function MovementPicker(FinalBoard, PlayerPos)
 	repeat
 		
@@ -32,11 +35,19 @@ function MovementPicker(FinalBoard, PlayerPos)
 	until choice:lower() == "exit"
 end
 function MovementFunction(choice, FinalBoard, PlayerPos)
+	local PlayerPosOld = PlayerPos
 	if SquareHexer(FinalBoard, PlayerPos) == "ODD" then
 		PlayerPos = OddMovement(choice, PlayerPos)
 	elseif SquareHexer(FinalBoard, PlayerPos) == "EVEN" then
 		PlayerPos = EvenMovement(choice, PlayerPos)
 	end
+	FinalBoard, PlayerPosOld = MovementMapper(FinalBoard, PlayerPos, PlayerPosOld)
+	return FinalBoard, PlayerPosOld
+end
+function MovementMapper(FinalBoard, PlayerPos, PlayerPosOld)
+	FinalBoard[PlayerPosOld[1]][PlayerPosOld[2]] = "O"
+	FinalBoard[PlayerPos[1]][PlayerPos[2]] = "P"
+	return FinalBoard, PlayerPos
 end
 function SquareHexer(FinalBoard, PlayerPos)
 	local result

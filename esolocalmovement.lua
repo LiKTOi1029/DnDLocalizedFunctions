@@ -24,11 +24,20 @@ function TableCreation(choice)
 	return result
 end
 function MapRenderer(FinalBoard, PlayerPos)
-	
+	for num3, _ in ipairs(FinalBoard) do
+		for num4, MapSlot in ipairs(FinalBoard[num3]) do
+			if num4 %% 2 == 1 then io.write(MapSlot.."  ") end
+		end
+		io.write("\n")
+		for num5, MapSlot in ipairs(FinalBoard[num3]) do
+			if num5 %% 2 == 0 then io.write("  "..MapSlot) end
+		end
+		io.write("\n")
+	end
 end
 function MovementPicker(FinalBoard, PlayerPos)
 	repeat
-		
+		print(MapRenderer(FinalBoard, PlayerPos))
 		io.write("Please input a direction to move across the 2x2 space like a hexagonal plane\n".."Directions: Lower-Right (LR), Upper-Right (UR), Lower-Left (LL), Upper-Left (UL), Up (U), Down (D)\n")
 		local choice = io.read("*l"):gsub("\n","")
 		if choice:lower() ~= "exit" then FinalBoard, PlayerPos = MovementFunction(choice, FinalBoard, PlayerPos) end

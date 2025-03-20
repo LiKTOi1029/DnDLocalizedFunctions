@@ -26,11 +26,11 @@ end
 function MapRenderer(FinalBoard, PlayerPos)
 	for num3, _ in ipairs(FinalBoard) do
 		for num4, MapSlot in ipairs(FinalBoard[num3]) do
-			if num4 % 2 == 1 then io.write(MapSlot.."  ") end
+			if num4 % 2 == 1 then io.write(MapSlot.."   ") end
 		end
 		io.write("\n")
 		for num5, MapSlot in ipairs(FinalBoard[num3]) do
-			if num5 % 2 == 0 then io.write("  "..MapSlot) end
+			if num5 % 2 == 0 then io.write("  "..MapSlot.."  ") end
 		end
 		io.write("\n")
 	end

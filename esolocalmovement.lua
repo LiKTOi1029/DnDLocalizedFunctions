@@ -26,7 +26,7 @@ end
 function MapRenderer(FinalBoard, PlayerPos)
 	for num3, _ in ipairs(FinalBoard) do
 		for num4, MapSlot in ipairs(FinalBoard[num3]) do
-			if num4 % 2 == 1 then io.write(MapSlot.."   ") end
+			if num4 % 2 == 1 then io.write(MapSlot.."  ") end
 		end
 		io.write("\n")
 		for num5, MapSlot in ipairs(FinalBoard[num3]) do
@@ -60,7 +60,7 @@ function MovementMapper(FinalBoard, PlayerPos, PlayerPosOld)
 end
 function SquareHexer(FinalBoard, PlayerPos)
 	local result
-	if (FinalBoard[PlayerPos[1]][PlayerPos[2]]%2) == 1 then result = "ODD"
+	if (PlayerPos[1]%2) == 1 then result = "ODD"
 	else result = "EVEN" end
 	return result
 end

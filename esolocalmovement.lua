@@ -26,11 +26,11 @@ end
 function MapRenderer(FinalBoard, PlayerPos)
 	for num3, _ in ipairs(FinalBoard) do
 		for num4, MapSlot in ipairs(FinalBoard[num3]) do
-			if num4 %% 2 == 1 then io.write(MapSlot.."  ") end
+			if num4 % 2 == 1 then io.write(MapSlot.."  ") end
 		end
 		io.write("\n")
 		for num5, MapSlot in ipairs(FinalBoard[num3]) do
-			if num5 %% 2 == 0 then io.write("  "..MapSlot) end
+			if num5 % 2 == 0 then io.write("  "..MapSlot) end
 		end
 		io.write("\n")
 	end
@@ -60,8 +60,8 @@ function MovementMapper(FinalBoard, PlayerPos, PlayerPosOld)
 end
 function SquareHexer(FinalBoard, PlayerPos)
 	local result
-	if (FinalBoard[PlayerPos[1]][PlayerPos[2]]%%2) == 1 then result = "ODD"
-	else result == "EVEN" end
+	if (FinalBoard[PlayerPos[1]][PlayerPos[2]]%2) == 1 then result = "ODD"
+	else result = "EVEN" end
 	return result
 end
 function EvenMovement(choice, PlayerPos)
@@ -80,10 +80,10 @@ function EvenMovement(choice, PlayerPos)
 	elseif choice:lower():gsub("-","") == ("upperleft" or "ul") then
 		PlayerPos[1] = PlayerPos[1]-1
 		return PlayerPos
-	elseif choice:lower():gsub("-","") == ("up", "u") then
+	elseif choice:lower():gsub("-","") == ("up" or "u") then
 		PlayerPos[2] = PlayerPos[2]-1
 		return PlayerPos
-	elseif choice:lower():gsub("-","") == ("down", "d") then
+	elseif choice:lower():gsub("-","") == ("down" or "d") then
 		PlayerPos[2] = PlayerPos[2]+1
 		return PlayerPos
 	else
@@ -107,10 +107,10 @@ function OddMovement(choice, PlayerPos)
 		PlayerPos[1] = PlayerPos[1]-1
 		PlayerPos[2] = PlayerPos[2]-1
 		return PlayerPos
-	elseif choice:lower():gsub("-","") == ("up", "u") then
+	elseif choice:lower():gsub("-","") == ("up" or "u") then
 		PlayerPos[2] = PlayerPos[2]-1
 		return PlayerPos
-	elseif choice:lower():gsub("-","") == ("down", "d") then
+	elseif choice:lower():gsub("-","") == ("down" or "d") then
 		PlayerPos[2] = PlayerPos[2]+1
 		return PlayerPos
 	else

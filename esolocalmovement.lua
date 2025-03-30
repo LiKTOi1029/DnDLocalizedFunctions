@@ -49,10 +49,14 @@ end
 function MovementFunction(choice, FinalBoard, PlayerPos)
 	local PlayerPosOld = PlayerPos
 	if SquareHexer(FinalBoard, PlayerPos) == "ODD" then
+		print(table.concat(PlayerPos))
 		PlayerPos = OddMovement(choice, PlayerPos)
+		print(PlayerPos)
 	elseif SquareHexer(FinalBoard, PlayerPos) == "EVEN" then
 		PlayerPos = EvenMovement(choice, PlayerPos)
+		print(PlayerPos)
 	end
+	print("passed movementfunction if statements")
 	FinalBoard, PlayerPosOld = MovementMapper(FinalBoard, PlayerPos, PlayerPosOld)
 	return FinalBoard, PlayerPosOld
 end
@@ -70,8 +74,8 @@ end
 function EvenMovement(choice, PlayerPos)
 	local result
 	if choice:lower():gsub("-","") == ("lowerright" or "lr") then 
-		PlayerPos[1] = PlayerPos[1]+1
 		PlayerPos[2] = PlayerPos[2]+1
+		PlayerPos[1] = PlayerPos[1]+1
 		print("Returned 1")
 		return PlayerPos
 	elseif choice:lower():gsub("-","") == ("upperright" or "ur") then
@@ -79,27 +83,26 @@ function EvenMovement(choice, PlayerPos)
 		print("Returned 2")
 		return PlayerPos
 	elseif choice:lower():gsub("-","") == ("lowerleft" or "ll") then
-		PlayerPos[1] = PlayerPos[1]-1
-		PlayerPos[2] = PlayerPos[2]+1
+		PlayerPos[2] = PlayerPos[2]-1
+		PlayerPos[1] = PlayerPos[1]+1
 		print("Returned 3")
 		return PlayerPos
 	elseif choice:lower():gsub("-","") == ("upperleft" or "ul") then
-		PlayerPos[1] = PlayerPos[1]-1
+		PlayerPos[2] = PlayerPos[2]-1
 		print("Returned 4")
 		return PlayerPos
 	elseif choice:lower():gsub("-","") == ("up" or "u") then
-		PlayerPos[2] = PlayerPos[2]-1
+		PlayerPos[1] = PlayerPos[1]-1
 		print("Returned 5")
 		return PlayerPos
 	elseif choice:lower():gsub("-","") == ("down" or "d") then
-		PlayerPos[2] = PlayerPos[2]+1
+		PlayerPos[1] = PlayerPos[1]+1
 		print("Returned 6")
 		return PlayerPos
 	else
-		result = "This is not a valid option!"
-		return result
+		print("returned nothing")
 	end
-	print("returned nothing")
+	return PlayerPos
 end
 function OddMovement(choice, PlayerPos)
 	local result
@@ -121,19 +124,10 @@ function OddMovement(choice, PlayerPos)
 		PlayerPos[2] = PlayerPos[2]-1
 		print("Returned 10")
 		return PlayerPos
-	elseif choice:lower():gsub("-","") == ("up" or "u") then
-		PlayerPos[2] = PlayerPos[2]-1
-		print("Returned 11")
-		return PlayerPos
-	elseif choice:lower():gsub("-","") == ("down" or "d") then
-		PlayerPos[2] = PlayerPos[2]+1
-		print("Returned 12")
-		return PlayerPos
 	else
-		result = "This is not a valid option!"
-		return result
+		print("returned nothing")
 	end
-	print("returned nothing")
+	return PlayerPos
 end
 
 print(Beginning())

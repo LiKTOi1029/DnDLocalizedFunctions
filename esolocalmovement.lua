@@ -1,8 +1,8 @@
 function Beginning()
 	local TileSet = {{["Name"] = "Grass", ["Occupied"] = "G"},{["Name"] = "Water", ["Occupied"] = "No"}}
-	local Map = {{TileSet[1],TileSet[1],TileSet[1]},
-	{TileSet[1],TileSet[2],TileSet[1]},
-	{TileSet[1],TileSet[1],TileSet[1]},}
+	local Map = {{TileSet[1],TileSet[1],TileSet[1],},
+	{TileSet[1],TileSet[2],TileSet[2]},
+	{TileSet[1],TileSet[2],TileSet[2]},}
 	-- The map is a 3x3 area.
 	for num1 = 1, #Map, 1 do
 		for num2 = 1, #Map[num1], 1 do
